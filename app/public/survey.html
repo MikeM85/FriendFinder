@@ -214,7 +214,7 @@
 			<img id="userMatchImage" class="materialboxed" width="650" src="">
 		</div>
 		<div class="modal-footer">
-			<a href="/survey.js" class="modal-action modal-close waves-effect waves-green btn-flat">Fill Again!</a>
+			<a href="/home" class="modal-action modal-close waves-effect waves-green btn-flat">Fill Again!</a>
 		</div>
 	</div>
 
@@ -253,6 +253,7 @@
 			// console.log('userInput = ' + JSON.stringify(userInput));
 			// Add user inputs to friends list
 			$.post('/friends', userInput)
+			
       		.done(function(data) {
       			// console.log('response = ' + JSON.stringify(data));
       			// Set the name and image values of friend match

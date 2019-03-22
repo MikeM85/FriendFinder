@@ -3,14 +3,16 @@ var path = require('path');
 
 // Import the list of friend entries
 var friends = require('../data/friends.js');
-console.log(friends);
+
 // Export API routes
 module.exports = function(app) {
 	// console.log('___ENTER apiRoutes.js___');
 
 	// Total list of friend entries
 	app.get('/friends', function(req, res) {
+		console.log(friends);
 		res.json(friends);
+		// res.render("index", friends);
 	});
 
 	// Add new friend entry
@@ -20,7 +22,7 @@ module.exports = function(app) {
 		// console.log('userInput = ' + JSON.stringify(userInput));
 
 		var userResponses = userInput.scores;
-		// console.log('userResponses = ' + userResponses);
+		console.log('userResponses = ' + userResponses);
 
 		// Compute best friend match
 		var matchName = '';
@@ -47,13 +49,14 @@ module.exports = function(app) {
 				totalDifference = diff;
 				matchName = friends[i].name;
 				matchImage = friends[i].photo;
+				// Add new user
+				friends.push(userInput.scores);
 			}
 		}
 
-		// Add new user
-		friends.push(userInput);
 
 		// Send appropriate response
 		res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
 	});
 };
+
