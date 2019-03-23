@@ -6,7 +6,7 @@ var friends = require('../data/friends.js');
 
 // Export API routes
 module.exports = function(app) {
-	// console.log('___ENTER apiRoutes.js___');
+	
 
 	// Total list of friend entries
 	app.get('/friends', function(req, res) {
@@ -49,9 +49,10 @@ module.exports = function(app) {
 				totalDifference = diff;
 				matchName = friends[i].name;
 				matchImage = friends[i].photo;
-				// Add new user
-				friends.push(userInput.scores);
 			}
+			// Add new user
+			console.log("friends" + friends);
+			friends.push(userInput.scores);
 		}
 
 
