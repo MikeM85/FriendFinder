@@ -52,9 +52,6 @@ module.exports = function(app) {
 			}
 			
 		}
-	// 	// Add new user
-	// console.log("friends" + JSON.stringify(friends));
-	// userInput.push(JSON.stringify(friends));
 
 		// Send appropriate response
 		res.json({status: 'OK', matchName: matchName, matchImage: matchImage});

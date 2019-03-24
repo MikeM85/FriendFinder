@@ -74,18 +74,12 @@
 				<div class="col s12 z-depth-5 mainpanel">
 					<div id="mainpanel-content">
 
-							<div class="input-field col s6">
-									<h5>Name (Required)</h5>
-									<i class="material-icons prefix">account_circle</i>
-									<input type="text" class="validate" placeholder="Your Name Here" id="userName">
+							<div class="form-group">
+									<input id="name" type="text" class="form-control" placeholder="Name (Required)">
 								</div>
-		
-								<div class="input-field col s6">
-									<h5>Link to Photo Image (Required)</h5>
-									<i class="material-icons prefix">picture_in_picture</i>
-									<input type="text" class="validate" placeholder="Photo Link Here" id="userPhoto">
+								<div class="form-group">
+									<input id="photo" type="text" class="form-control" placeholder="Link to Profile Photo (Required)">
 								</div>
-
 
 						<!-- Survey Questions -->
 						<div class="input-field col s12">
@@ -289,9 +283,17 @@
 		$('#submitButton').on('click', function (event) {
 			event.preventDefault();
 			// Gather user inputs
+// Form validation
+var valid = true;
+		if($("#name").val() === "" || $("#photo").val() === "") {
+			valid = false;
+		} else if($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
+			valid = false;
+		}
+		if(valid === true) {
 				var userInput = {
-					// name: $('#userName').val().trim(),
-					// photo: $('#userPhoto').val().trim(),
+					name: $('#name').val(),
+					photo: $('#photo').val(),
 					scores: [
 						$('#question1').val(),
 						$('#question2').val(),
@@ -320,6 +322,7 @@
 
 
 			$("#modal1").show();
+				}
 		});
 
 	</script>
