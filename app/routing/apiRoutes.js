@@ -47,17 +47,17 @@ module.exports = function(app) {
 				// console.log('Friend image = ' + friends[i].photo);
 
 				totalDifference = diff;
-				// matchName = friends[i].name;
-				// matchImage = friends[i].photo;
+				matchName = friends[i].name;
+				matchImage = friends[i].photo;
 			}
 			
 		}
 	// 	// Add new user
-	// console.log("friends" + fr);
-	// friends.push(userInput);
+	console.log("friends" + JSON.stringify(friends));
+	userInput.push(JSON.stringify(friends));
 
 		// Send appropriate response
-		// res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
+		res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
 	});
 };
 
