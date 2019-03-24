@@ -21,13 +21,13 @@ module.exports = function(app) {
 		var userInput = req.body;
 		console.log('userInput = ' + JSON.stringify(userInput));
 
-		// var userResponses = userInput.scores;
-		// console.log('userResponses = ' + userResponses);
+		var userResponses = userInput.scores;
+		console.log('userResponses = ' + userResponses);
 
 		// // Compute best friend match
-		// var matchName = '';
-		// var matchImage = '';
-		// var totalDifference = 10000; // Make the initial value big for comparison
+		var matchName = '';
+		var matchImage = '';
+		var totalDifference = 10000; // Make the initial value big for comparison
 
 		// Examine all existing friends in the list
 		for (var i = 0; i < friends.length; i++) {
@@ -53,8 +53,8 @@ module.exports = function(app) {
 			
 		}
 	// 	// Add new user
-	console.log("friends" + JSON.stringify(friends));
-	userInput.push(JSON.stringify(friends));
+	// console.log("friends" + JSON.stringify(friends));
+	// userInput.push(JSON.stringify(friends));
 
 		// Send appropriate response
 		res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
