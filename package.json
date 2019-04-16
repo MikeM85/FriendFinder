@@ -1,0 +1,30 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "like a dating app, but not as sexy",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeM85/FriendFinder.git"
+  },
+  "keywords": [
+    "friend",
+    "finder"
+  ],
+  "author": "MikeM85",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikeM85/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/MikeM85/FriendFinder#readme"
+}
