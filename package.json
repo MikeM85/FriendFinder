@@ -1,30 +1,41 @@
 {
-  "name": "friendfinder",
-  "version": "1.0.0",
-  "description": "like a dating app, but not as sexy",
-  "main": "server.js",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "test",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MikeM85/FriendFinder.git"
-  },
-  "keywords": [
-    "friend",
-    "finder"
-  ],
-  "author": "MikeM85",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MikeM85/FriendFinder/issues"
-  },
-  "homepage": "https://github.com/MikeM85/FriendFinder#readme"
+	"name": "foodbook",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+		"start:prod": "node server.js",
+		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+		"client": "npm start --prefix client",
+		"seed": "node scripts/seedDB.js",
+		"install": "cd client && npm install",
+		"build": "cd client && npm run build",
+		"heroku-postbuild": "npm run build",
+		"server": "nodemon server.js",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"concurrently": "^4.1.0",
+		"nodemon": "^1.18.7"
+	},
+	"dependencies": {
+		"@sendgrid/mail": "^6.4.0",
+		"axios": "^0.19.0",
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^7.0.0",
+		"express": "^4.16.3",
+		"if-env": "^1.0.4",
+		"jsonwebtoken": "^8.5.1",
+		"mongod": "^2.0.0",
+		"mongoose": "^5.6.0",
+		"nodemailer": "^6.1.0",
+		"passport": "^0.4.0",
+		"passport-jwt": "^4.0.0",
+		"sendgrid": "^5.2.3",
+		"validator": "^10.11.0",
+		"yelp-fusion": "^2.2.1"
+	}
 }

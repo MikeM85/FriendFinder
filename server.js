@@ -1,26 +1,33 @@
-// Pull in required dependencies
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
+const express = require("express");
+const mongoose = require("mongoose");
+const passport = require("passport");
+const routes = require("./routes");
 
-// Configure the Express application
-var app = express();
-var PORT = process.env.PORT || 3333;
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-// Expose the public directory to access CSS files
-app.use(express.static(path.join(__dirname, './app/public')));
+// Defines middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// // Add middleware for parsing incoming request bodies
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+// Add routes, both API and view
+app.use(routes);
 
-// // Add the application routes
-require(path.join(__dirname, './app/routing/apiRoutes'))(app);
-require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/coolhands", { useNewUrlParser: true });
 
-// Start listening on PORT
+//Passport Middleware
+app.use(passport.initialize());
+
+//Passport Config
+require("./config/passport")(passport);
+
+// Start the API server
 app.listen(PORT, function() {
-  console.log('Friend Finder app is listening on PORT: ' + PORT);
-})
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+});
 
